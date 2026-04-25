@@ -1,0 +1,27 @@
+﻿@page "/examples/positions"
+@using ToastBlazor.Enums
+@using ToastBlazor.Models
+
+@inject IToastService Toast
+@inject ToastOptions Options
+
+<div class="d-flex align-items-center mb-3">
+    <a href="/" class="btn btn-outline-secondary me-3">← Home</a>
+    <h2 class="m-0">Positions Toasts</h2>
+</div>
+
+<select @bind="Options.Position">
+    @foreach (var pos in Enum.GetValues<ToastPosition>())
+    {
+        <option value="@pos">@pos</option>
+    }
+</select>
+
+<button class="btn" @onclick="@ShowToast">Show Toast</button>
+
+@code {
+    void ShowToast()
+    {
+        Toast.Success($"Toast at {Options.Position}");
+    }
+}

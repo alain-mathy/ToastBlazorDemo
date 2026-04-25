@@ -1,0 +1,15 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+	<PropertyGroup>
+		<TargetFramework>net10.0</TargetFramework>
+		<Nullable>enable</Nullable>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<!--<BlazorDisableThrowNavigationException>true</BlazorDisableThrowNavigationException>
+		<UseRazorSourceGenerator>true</UseRazorSourceGenerator>-->
+	</PropertyGroup>
+
+	<ItemGroup>
+	  <PackageReference Include="ToastBlazor" Version="1.0.12" />
+	</ItemGroup>
+
+</Project>

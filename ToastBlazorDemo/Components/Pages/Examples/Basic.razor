@@ -1,0 +1,20 @@
+﻿@page "/examples/basic"
+@using ToastBlazor.Components
+@inject IToastService Toast
+
+<div class="d-flex align-items-center mb-3">
+    <a href="/" class="btn btn-outline-secondary me-3">← Home</a>
+    <h2 class="m-0">Basic Toasts</h2>
+</div>
+
+<button class="btn" @onclick="ShowSuccess">Success</button>
+<button class="btn" @onclick="ShowError">Error</button>
+<button class="btn" @onclick="ShowInfo">Info</button>
+<button class="btn" @onclick="ShowWarning">Warning</button>
+
+@code {
+    void ShowSuccess() => Toast.Success("Operation successful!");
+    void ShowError() => Toast.Error("Something went wrong");
+    void ShowInfo() => Toast.Info("Information message");
+    void ShowWarning() => Toast.Warning("Warning message");
+}

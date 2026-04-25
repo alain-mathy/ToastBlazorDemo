@@ -1,0 +1,19 @@
+﻿@page "/examples/types"
+@inject IToastService Toast
+
+<div class="d-flex align-items-center mb-3">
+    <a href="/" class="btn btn-outline-secondary me-3">← Home</a>
+    <h2 class="m-0">Types Toasts</h2>
+</div>
+
+<button class="btn success" @onclick="@ShowSuccess">Success</button>
+<button class="btn error" @onclick="@ShowError">Error</button>
+<button class="btn info" @onclick="@ShowInfo">Info</button>
+<button class="btn warning" @onclick="@ShowWarning">Warning</button>
+
+@code {
+    void ShowSuccess() => Toast.Success("Operation successful!");
+    void ShowError() => Toast.Error("Something went wrong");
+    void ShowInfo() => Toast.Info("Information message");
+    void ShowWarning() => Toast.Warning("Warning message");
+}

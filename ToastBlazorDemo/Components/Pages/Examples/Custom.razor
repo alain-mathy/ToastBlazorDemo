@@ -1,0 +1,26 @@
+﻿@page "/examples/custom"
+@using ToastBlazor.Enums
+@using ToastBlazor.Models
+
+@inject IToastService Toast
+
+<div class="d-flex align-items-center mb-3">
+    <a href="/" class="btn btn-outline-secondary me-3">← Home</a>
+    <h2 class="m-0">Custom Toasts</h2>
+</div>
+
+<button class="btn" @onclick="@ShowCustom">Show Custom Toast</button>
+
+@code {
+    void ShowCustom()
+    {
+        Toast.Show(new ToastMessage
+        {
+            Message = "Custom animation + dark theme",
+            Level = ToastLevel.Info,
+            Theme = ToastTheme.Dark,
+            Animation = ToastAnimation.Zoom,
+            Duration = 5000
+        });
+    }
+}

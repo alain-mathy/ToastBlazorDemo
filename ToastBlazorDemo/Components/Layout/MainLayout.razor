@@ -1,0 +1,29 @@
+﻿@using ToastBlazor.Components
+@inherits LayoutComponentBase
+
+<header>
+    <nav class="nav-menu">
+        <a href="/">ToastBlazorDemo</a>
+        <a href="/examples/basic">Basic</a>
+        <a href="/examples/types">Types</a>
+        <a href="/examples/themes">Themes</a>
+        <a href="/examples/positions">Positions</a>
+        <a href="/examples/custom">Custom</a>
+    </nav>
+</header>
+
+
+<div class="page">
+    <main>
+        <article class="content px-4">
+            <ToastContainer/>
+            @Body
+        </article>
+    </main>
+</div>
+
+<div id="blazor-error-ui" data-nosnippet>
+    An unhandled error has occurred.
+    <a href="." class="reload">Reload</a>
+    <span class="dismiss">🗙</span>
+</div>

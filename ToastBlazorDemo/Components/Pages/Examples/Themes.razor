@@ -1,0 +1,44 @@
+﻿@page "/examples/themes"
+@using ToastBlazor.Enums
+@using ToastBlazor.Models
+
+@inject IToastService Toast
+
+<div class="d-flex align-items-center mb-3">
+    <a href="/" class="btn btn-outline-secondary me-3">← Home</a>
+    <h2 class="m-0">Themes Toasts</h2>
+</div>
+
+<button class="btn" @onclick="@ShowLight">
+    Light
+</button>
+
+<button class="btn" @onclick="@ShowDark">
+    Dark
+</button>
+
+@code {
+    void ShowLight()
+    {
+        Toast.Show(new ToastMessage
+        {
+            Message = "Theme light animation",
+            Level = ToastLevel.Info,
+            Theme = ToastTheme.Light,
+            Animation = ToastAnimation.Fade,
+            Duration = 5000
+        });
+    }
+
+    void ShowDark()
+    {
+        Toast.Show(new ToastMessage
+        {
+            Message = "Theme dark animation",
+            Level = ToastLevel.Info,
+            Theme = ToastTheme.Dark,
+            Animation = ToastAnimation.Fade,
+            Duration = 5000
+        });
+    }
+}
