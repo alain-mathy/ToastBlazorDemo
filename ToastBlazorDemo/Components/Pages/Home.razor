@@ -3,15 +3,19 @@
 <h2>ToastBlazor Demo</h2>
 
 <button class="btn" @onclick="@ShowBasic">Basic</button>
-<button class="btn" @onclick="@ShowCustom">Custom</button>
-<button class="btn" @onclick="@ShowPositions">Positions</button>
-<button class="btn" @onclick="@ShowThemes">Themes</button>
 <button class="btn" @onclick="@ShowTypes">Types</button>
+<button class="btn" @onclick="@ShowThemes">Themes</button>
+<button class="btn" @onclick="@ShowPositions">Positions</button>
+<button class="btn" @onclick="@ShowCustom">Custom</button>
+<button class="btn" @onclick="@ShowPersonalIcons">Personal Icons</button>
+<button class="btn" @onclick="@Show_Infinite">Infinite toast</button>
 
-@code{
+@code {
     void ShowBasic() => Nav.NavigateTo("/examples/basic");
-    void ShowCustom() => Nav.NavigateTo("/examples/custom");
-    void ShowPositions() => Nav.NavigateTo("/examples/positions");
-    void ShowThemes() => Nav.NavigateTo("/examples/themes");
     void ShowTypes() => Nav.NavigateTo("/examples/types");
+    void ShowThemes() => Nav.NavigateTo("/examples/themes");
+    void ShowPositions() => Nav.NavigateTo("/examples/positions");
+    void ShowCustom() => Nav.NavigateTo("/examples/custom");
+    void ShowPersonalIcons() => Nav.NavigateTo("/examples/personal-icons");
+    void Show_Infinite() => Nav.NavigateTo("/examples/show-infinite");
 }

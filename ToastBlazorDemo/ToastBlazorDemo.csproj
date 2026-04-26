@@ -9,7 +9,7 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-	  <PackageReference Include="ToastBlazor" Version="1.0.12" />
+	  <PackageReference Include="ToastBlazor" Version="1.0.14" />
 	</ItemGroup>
 
 </Project>

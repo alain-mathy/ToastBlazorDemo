@@ -17,6 +17,10 @@
     Dark
 </button>
 
+<button class="btn" @onclick="@ShowMinimal">
+    Minimal
+</button>
+
 @code {
     void ShowLight()
     {
@@ -37,6 +41,18 @@
             Message = "Theme dark animation",
             Level = ToastLevel.Info,
             Theme = ToastTheme.Dark,
+            Animation = ToastAnimation.Fade,
+            Duration = 5000
+        });
+    }
+
+    void ShowMinimal()
+    {
+        Toast.Show(new ToastMessage
+        {
+            Message = "Theme minimal animation",
+            Level = ToastLevel.Info,
+            Theme = ToastTheme.Minimal,
             Animation = ToastAnimation.Fade,
             Duration = 5000
         });

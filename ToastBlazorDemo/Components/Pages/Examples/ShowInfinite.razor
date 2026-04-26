@@ -1,0 +1,56 @@
+﻿@page "/examples/show-infinite"
+@using ToastBlazor.Enums
+@inject IToastService Toast
+
+<div class="d-flex align-items-center mb-3">
+    <a href="/" class="btn btn-outline-secondary me-3">← Home</a>
+    <h2 class="m-0">Show Infinite</h2>
+</div>
+
+<select @bind="SelectedIcon" class="form-select" style="max-width:300px;">
+    <option value="">Default icon</option>
+    <option value="@SuccessIcon">Success ✓</option>
+    <option value="@ErrorIcon">Error ✖</option>
+    <option value="@WarningIcon">Warning ⚠</option>
+    <option value="@InfoIcon">Info ℹ</option>
+    <option value="@BellIcon">Cloche 🔔</option>
+    <option value="@StarIcon">Star ⭐</option>
+    <option value="@HeartIcon">Heart ❤️</option>
+</select>
+
+<button class="btn btn-primary mt-2" @onclick="Show_Infinite">
+    Test the icon
+</button>
+
+@code {
+    private string? SelectedIcon { get; set; }
+    private ToastLevel SelectedLevel { get; set; } = ToastLevel.Info;
+
+    private void Show_Infinite()
+    {
+        Toast.Show(
+            "Infinite toast",
+            SelectedLevel,
+            -1,
+            SelectedIcon
+        );
+    }
+
+    // Icônes SVG
+    private string SuccessIcon = @"<svg width=""20"" height=""20"" viewBox=""0 0 24 24"" fill=""currentColor""><path d=""M9 16.2l-3.5-3.5-1.4 1.4L9 19 20 8l-1.4-1.4z""/></svg>";
+
+    private string ErrorIcon = @"
+        <svg width='20' height='20' viewBox='0 0 24 24' fill='currentColor'>
+            <path d='M12 2a10 10 0 1 0 0 20a10 10 0 0 0 0-20zm-3 6l3 3l3-3l1.5 1.5l-3 3l3 3l-1.5 1.5l-3-3l-3 3L7.5 15l3-3l-3-3L9 8z'/>
+        </svg>";
+
+    private string WarningIcon = @"<svg width=""20"" height=""20"" viewBox=""0 0 24 24"" fill=""currentColor""><path d=""M1 21h22L12 2 1 21zm12-3h-2v-2h2v2zm0-4h-2v-4h2v4z""/></svg>";
+
+    private string InfoIcon = @"<svg width=""20"" height=""20"" viewBox=""0 0 24 24"" fill=""currentColor""><path d=""M11 7h2v2h-2zm0 4h2v6h-2zm1-9C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2z""/></svg>";
+
+    private string BellIcon = @"<svg width=""20"" height=""20"" viewBox=""0 0 24 24"" fill=""currentColor""><path d=""M12 24c1.1 0 2-.9 2-2h-4c0 1.1.9 2 2 2zm6-6v-5c0-3.1-1.6-5.6-4.5-6.3V6c0-.8-.7-1.5-1.5-1.5S10.5 5.2 10.5 6v.7C7.6 7.4 6 9.9 6 13v5l-2 2v1h16v-1l-2-2z""/></svg>";
+
+    private string StarIcon = @"<svg width=""20"" height=""20"" viewBox=""0 0 24 24"" fill=""currentColor""><path d=""M12 17.3l6.2 3.7-1.6-7 5.4-4.7-7.1-.6L12 2 9.1 8.7l-7.1.6 5.4 4.7-1.6 7z""/></svg>";
+
+    private string HeartIcon = @"<svg width=""20"" height=""20"" viewBox=""0 0 24 24"" fill=""currentColor""><path d=""M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z""/></svg>";
+}

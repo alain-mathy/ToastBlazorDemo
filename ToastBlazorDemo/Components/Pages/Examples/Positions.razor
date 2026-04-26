@@ -10,7 +10,7 @@
     <h2 class="m-0">Positions Toasts</h2>
 </div>
 
-<select @bind="Options.Position">
+<select @bind="Options.DefaultPosition">
     @foreach (var pos in Enum.GetValues<ToastPosition>())
     {
         <option value="@pos">@pos</option>
@@ -22,6 +22,6 @@
 @code {
     void ShowToast()
     {
-        Toast.Success($"Toast at {Options.Position}");
+        Toast.Success($"Toast at {Options.DefaultPosition}");
     }
 }
