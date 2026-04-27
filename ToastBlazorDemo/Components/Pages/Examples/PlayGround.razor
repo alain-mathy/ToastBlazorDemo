@@ -1,0 +1,110 @@
+﻿@page "/examples/toast-playground"
+@using ToastBlazor.Enums
+@using ToastBlazor.Models
+@inject IToastService Toast
+@inject ToastOptions Options
+
+
+<div class="playground-container">
+
+    <h2 class="title">ToastBlazor Playground</h2>
+    <p class="subtitle">Configure your toast and preview it instantly</p>
+
+    <div class="d-flex align-items-center mb-3">
+        <a href="/" class="btn btn-outline-secondary me-3">← Home</a>
+    </div>
+
+    <div class="playground-card">
+
+        <div class="playground-grid">
+
+            <!-- Thème -->
+            <div class="field">
+                <label>Theme</label>
+                <select @bind="SelectedTheme">
+                    @foreach (var theme in Enum.GetValues<ToastTheme>())
+                    {
+                        <option value="@theme">@theme</option>
+                    }
+                </select>
+            </div>
+
+            <!-- Animation -->
+            <div class="field">
+                <label>Animation</label>
+                <select @bind="SelectedAnimation">
+                    @foreach (var anim in Enum.GetValues<ToastAnimation>())
+                    {
+                        <option value="@anim">@anim</option>
+                    }
+                </select>
+            </div>
+
+            <!-- Position (bind direct sur Options.DefaultPosition) -->
+            <div class="field">
+                <label>Position</label>
+                <select @bind="Options.DefaultPosition">
+                    @foreach (var pos in Enum.GetValues<ToastPosition>())
+                    {
+                        <option value="@pos">@pos</option>
+                    }
+                </select>
+            </div>
+
+            <!-- Icône / Level -->
+            <div class="field">
+                <label>Icon / Level</label>
+                <select @bind="SelectedIconKey">
+                    <option value="default">(default)</option>
+                    <option value="info">Info</option>
+                    <option value="success">Success</option>
+                    <option value="warning">Warning</option>
+                    <option value="error">Error</option>
+                </select>
+            </div>
+
+            <!-- Durée -->
+            <div class="field">
+                <label>Duration (ms)</label>
+                <input type="number" @bind="SelectedDuration" min="-1" />
+                <small class="hint">(-1 = infinite)</small>
+            </div>
+
+        </div>
+
+        <button class="btn-primary" @onclick="ShowCustomToast">
+            Show Toast
+        </button>
+
+    </div>
+</div>
+
+@code {
+    ToastTheme SelectedTheme = ToastTheme.Light;
+    ToastAnimation SelectedAnimation = ToastAnimation.Fade;
+
+    string SelectedIconKey = "default";
+    int SelectedDuration = 5000;
+
+    void ShowCustomToast()
+    {
+        var level = SelectedIconKey switch
+        {
+            "success" => ToastLevel.Success,
+            "warning" => ToastLevel.Warning,
+            "error" => ToastLevel.Error,
+            "info" => ToastLevel.Info,
+            _ => ToastLevel.Info
+        };
+
+        Toast.Show(new ToastMessage
+        {
+            Message = $"Custom toast at {Options.DefaultPosition}",
+            Level = level,
+            Theme = SelectedTheme,
+            Animation = SelectedAnimation,
+            Duration = SelectedDuration,
+            ShowProgressBar = SelectedDuration > 0
+        });
+    }
+}
